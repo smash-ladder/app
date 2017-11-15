@@ -1,0 +1,30 @@
+.login-page {
+  height: 100%;
+  padding: 20px;
+}
+
+.login-page img {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login-page__logo {
+  margin-top: 20px;
+}
+
+.login-form {
+  width: 100%;
+}
+
+input, button {
+  width: 100%;
+  border-radius: 4px;
+  padding: 15px;
+  border: none;
+  margin: 5px 0;
+}
+
+button {
+  background-color: #ff0010;
+  color: white;
+}

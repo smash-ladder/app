@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import logo from './images/logo.png';
 import './App.css';
 import Ladder from './Ladder/Ladder';
+import Login from './Login/Login';
 import MatchesPage from './Matches/MatchesPage';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 class App extends Component {
   render() {
     return (
+      /*<Login />*/
       <Router>
         <div className='app'>
           <div className="topbar">

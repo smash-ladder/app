@@ -1,6 +1,10 @@
 #root {
   /*height: 100%;*/
 }
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: #333;
   /*height: 100%;*/
@@ -56,15 +60,14 @@ body {
 }
 
 .tab-item--active {
-  /*border: 1px solid #666;*/
-  /*background-color: #333;*/
   border-bottom: 3px solid #ffcc28;
   color: #ffcc28;
 }
 
 h1 {
   color: white;
-  margin: auto 20px;
+  margin: 20px;
+  font-size: 1.4em;
 }
 
 .ladder {

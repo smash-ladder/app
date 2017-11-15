@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Navbar from '../Navbar/Navbar';
 
 const data = [
   {
@@ -54,9 +55,14 @@ export default class Ladder extends Component {
     });
 
     return (
-      <ul className='ladder'>
-        {items}
-      </ul>
+      <div className='app'>
+        <Navbar />
+        <div className="app__body">
+          <ul className='ladder'>
+            {items}
+          </ul>
+        </div>
+      </div>
     );
   }
 }

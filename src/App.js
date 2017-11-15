@@ -4,7 +4,7 @@ import './App.css';
 import Ladder from './Ladder/Ladder';
 import Login from './Login/Login';
 import MatchesPage from './Matches/MatchesPage';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, NavLink } from 'react-router-dom';
 
 class App extends Component {
   render() {
@@ -12,15 +12,15 @@ class App extends Component {
       /*<Login />*/
       <Router>
         <div className='app'>
-          <div className="topbar">
+          <div className="app__topbar">
             <img src={logo} className="topbar__logo" alt="logo" />
-          </div>
-          <div className='tab-bar'>
-            <div className='tab-item'>
-              <Link to={'/matches'}>Matches</Link>
-            </div>
-            <div className='tab-item tab-item--active'>
-              <Link to={'/'}>Ladder</Link>
+            <div className='tab-bar'>
+              <div className='tab-item'>
+                <NavLink to={'/matches'} activeClassName='tab-item--active'>Matches</NavLink>
+              </div>
+              <div className='tab-item'>
+                <NavLink to={'/'} activeClassName='tab-item--active'>Ladder</NavLink>
+              </div>
             </div>
           </div>
           <div className="app__body">

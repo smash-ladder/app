@@ -3,7 +3,7 @@ import './App.css';
 import Ladder from './Ladder/Ladder';
 import Login from './Login/Login';
 import MatchesPage from './Matches/MatchesPage';
-import { BrowserRouter, Switch, Route, Link, NavLink } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
 class App extends Component {
   render() {

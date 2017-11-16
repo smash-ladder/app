@@ -24,7 +24,7 @@ export default class MyMatchesList extends Component {
   render() {
     const items = data.map((item, index) => {
       return (
-        <MatchesRow player={item} key={index.toString()} ></MatchesRow>
+        <MatchesRow player={item} listIndex={index} ></MatchesRow>
       );
     });
 

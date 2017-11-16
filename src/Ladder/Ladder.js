@@ -13,19 +13,25 @@ export default class Ladder extends Component {
   }
 
   async componentDidMount() {
-    const items = await api.follow('ranking').followAll('item');
+    const ladders = await api.follow('ladderCollection').followAll('item');
+    const ladder64 = ladders[0];
+    const rankingResources = await ladder64.follow('ranking').followAll('item');
     const rankings = [];
 
-    await Promise.all(items.map(async (item) => {
-      const ranking = await item.get();
-      let player = await item.follow('player');
+    await Promise.all(rankingResources.map(async (resource) => {
+      const ranking = await resource.get();
+      let player = await resource.follow('player');
       player = await player.get();
       rankings.push({
         rank: ranking.rank,
         name: player.userName,
-        character: characters[Math.floor(Math.random()*12)]
+        character: characters[Math.floor(Math.random()*12)] // todo: replace with character from api
       });
     }));
+
+    rankings.sort(function(a, b) {
+      return a.rank - b.rank;
+    });
 
     this.setState({ rankings });
   }

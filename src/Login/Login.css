@@ -22,6 +22,7 @@ input, button {
   padding: 15px;
   border: none;
   margin: 5px 0;
+  text-align: center;
 }
 
 button {

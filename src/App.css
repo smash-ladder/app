@@ -95,6 +95,7 @@ h1 {
   color: white;
   height: 50px;
   align-items: center;
+  width: 100%;
 }
 
 
@@ -110,4 +111,8 @@ h1 {
 .ladder-player__image {
   height: 100%;
   margin-right: 15px;
+}
+
+.page-title {
+  text-align: center;
 }

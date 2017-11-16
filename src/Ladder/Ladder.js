@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from '../Navbar/Navbar';
+import Header from '../Header/Header';
 import api from '../Api';
 
 const characters = ['kirby', 'falcon', 'ness', 'jigglypuff', 'link', 'pikachu', 'yoshi', 'fox', 'mario', 'donkeykong', 'samus', 'luigi'];
@@ -50,7 +50,7 @@ export default class Ladder extends Component {
 
     return (
       <div className='app'>
-        <Navbar />
+        <Header hasNavbar={true} />
         <div className="app__body">
           <ul className='ladder'>
             {items}

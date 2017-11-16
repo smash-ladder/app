@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
 import './ResultPage.css';
 
 export default class ResultPlayerInfoPage extends Component {

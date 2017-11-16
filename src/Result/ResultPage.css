@@ -1,0 +1,66 @@
+.result-page {
+  padding: 20px;
+}
+
+.winning-button {
+  padding: 22px;
+  font-size: 1.3em;
+}
+
+.user-winning-button {
+  background-color: green;
+  margin-right:10px;
+}
+
+.change-characters-button {
+  background-color: grey;
+  font-size: 0.9em;
+  padding: 12px;
+}
+
+.versus-wrapper {
+  display: flex;
+  color: white;
+  margin-top: 45px;
+  margin-bottom: 45px;
+  justify-content: space-evenly;
+}
+
+.player-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.versus {
+  min-height: 125px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.match-player__image {
+  border: 3px solid white;
+  border-radius: 4px;
+  width: 100px;
+  margin-bottom: 15px;
+}
+
+.winner-button-wrapper {
+  display: flex;
+}
+
+.player-name {
+  display: inline-block;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.number-lives {
+  display: inline-block;
+  padding: 15px 20px 15px 20px;
+  background-color: grey;
+  font-size: 1.4em;
+  font-weight: bold;
+  border-radius: 50%;
+  margin-right: 5px;
+}

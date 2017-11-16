@@ -8,9 +8,7 @@ export default class MatchesPage extends Component {
       <div className='app'>
         <Header hasNavbar={true} />
         <div className="app__body">
-          <div className='matches-page'>
-            <MyMatchesList />
-          </div>
+          <MyMatchesList />
         </div>
       </div>
     );

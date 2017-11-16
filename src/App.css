@@ -80,6 +80,18 @@ h1 {
   font-size: 1.4em;
 }
 
+h2 {
+  color: #ffcc28;
+  margin: 20px;
+  font-size: 1.3em;
+  text-align: center;
+}
+
+h3 {
+  color: white;
+  text-align: center;
+}
+
 .ladder {
   list-style: none;
   padding: 0;

@@ -5,6 +5,7 @@ import Login from './Login/Login';
 import MatchesPage from './Matches/MatchesPage';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import ResultPage from './Result/ResultPage';
+import CharacterSelect from './CharacterSelect/CharacterSelect';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
           <Route path='/matches' component={MatchesPage} />
           <Route path='/result' component={ResultPage} />
           <Route path='/ladder' component={Ladder} />
+          <Route path='/character-select' component={CharacterSelect} />
         </Switch>
       </BrowserRouter>
     );

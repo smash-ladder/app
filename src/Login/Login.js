@@ -34,7 +34,7 @@ export default class Login extends Component {
     const { hasUser } = this.state;
 
     if (hasUser) {
-      return <Redirect to='/matches' />;
+      return <Redirect to='/ladder' />;
     }
 
     return (

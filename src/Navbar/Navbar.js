@@ -6,10 +6,10 @@ export default class Navbar extends Component {
     return (
       <div className='tab-bar'>
         <div className='tab-item'>
-          <NavLink to={'/matches'} activeClassName='tab-item--active'>Matches</NavLink>
+          <NavLink to={'/ladder'} activeClassName='tab-item--active'>Ladder</NavLink>
         </div>
         <div className='tab-item'>
-          <NavLink to={'/ladder'} activeClassName='tab-item--active'>Ladder</NavLink>
+          <NavLink to={'/matches'} activeClassName='tab-item--active'>Matches</NavLink>
         </div>
       </div>
     );

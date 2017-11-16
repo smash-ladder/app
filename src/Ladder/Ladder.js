@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from '../Navbar/Navbar';
+import Header from '../Header/Header';
 
 const data = [
   {
@@ -56,7 +56,7 @@ export default class Ladder extends Component {
 
     return (
       <div className='app'>
-        <Navbar />
+        <Header hasNavbar={true} />
         <div className="app__body">
           <ul className='ladder'>
             {items}

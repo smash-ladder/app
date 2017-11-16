@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import MyMatchesList from './MyMatchesList';
 import Header from '../Header/Header';
 
-export default class MatchesPage extends Component {
+export default class ResultPage extends Component {
   render() {
     return (
       <div className='app'>
-        <Header hasNavbar={true} />
+        <Header />
         <div className="app__body">
           <div className='matches-page'>
-            <MyMatchesList />
+            <h1>Submit Match Results</h1>
           </div>
         </div>
       </div>

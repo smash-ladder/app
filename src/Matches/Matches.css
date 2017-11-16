@@ -1,0 +1,19 @@
+.add-result-button {
+  background-color: #ffcc28;
+  color: white;
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.match-player__name {
+  min-width: 45%;
+}
+
+.match-player {
+  margin-bottom: 15px;
+  background-color: #222;
+}

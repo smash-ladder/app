@@ -5,10 +5,9 @@ export default class ResultPage extends Component {
   render() {
     return (
       <div className='app'>
-        <Header />
+        <Header pageTitle='Submit Match Results' />
         <div className="app__body">
           <div className='matches-page'>
-            <h1>Submit Match Results</h1>
           </div>
         </div>
       </div>

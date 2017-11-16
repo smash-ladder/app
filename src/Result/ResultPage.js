@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from '../Header/Header';
 import './ResultPage.css';
+import ResultPlayerInfoPage from './ResultPlayerInfoPage.js';
 
 const currentUser = {
   ranking: 1,
@@ -16,9 +17,6 @@ const opponent = {
 
 export default class ResultPage extends Component {
   render() {
-    const currentUserImage = require(`../images/${currentUser.character}.png`);
-    const opponentImage = require(`../images/${opponent.character}.png`);
-
     return (
       <div className='app'>
         <Header pageTitle='Submit Match Results' />
@@ -27,27 +25,13 @@ export default class ResultPage extends Component {
             <h2>Who won?</h2>
 
             <div className='versus-wrapper'>
-
-              <div className='player-info'>
-                <img src={currentUserImage} className='match-player__image'/>
-                <span className='player-name'>{currentUser.name}</span>
-                <button className='change-characters-button'>Change Character</button>
-              </div>
-
+              <ResultPlayerInfoPage player={currentUser} ></ResultPlayerInfoPage>
               <span className='versus'>vs</span>
-
-              <div className='player-info'>
-                <img src={opponentImage} className='match-player__image'/>
-                <span className='player-name'>{opponent.name}</span>
-                <button className='change-characters-button'>Change Character</button>
-              </div>
-
+              <ResultPlayerInfoPage player={opponent} ></ResultPlayerInfoPage>
             </div>
 
             <div>
-
               <h3>Winner&#39;s Lives Left</h3>
-
               <div className='number-lives-wrapper'>
                 <span className='number-lives'>1</span>
                 <span className='number-lives'>2</span>
@@ -55,7 +39,6 @@ export default class ResultPage extends Component {
                 <span className='number-lives'>4</span>
                 <span className='number-lives'>5</span>
               </div>
-
             </div>
 
             <div className='winner-button-wrapper'>

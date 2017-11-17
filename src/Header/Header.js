@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import logo from '../images/logo.png';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Navbar from '../Navbar/Navbar';
 
 export default class Header extends Component {

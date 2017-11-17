@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
 import './CharacterSelect.css';
 
 const characters = [
@@ -36,7 +35,7 @@ export default class CharacterSelect extends Component {
       const image = require(`../images/${char.key}.png`);
       return (
         <div className='char-select__item' key={index.toString()} onClick={(e) => this.handleClick(char.key)}>
-          <img src={image} className='char-select__image'/>
+          <img src={image} className='char-select__image' alt=''/>
           <h3>{char.name}</h3>
         </div>
       );

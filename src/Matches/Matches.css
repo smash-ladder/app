@@ -36,6 +36,7 @@ a {
 
 .match-player__name {
   min-width: 40%;
+  display: block !important;
 }
 
 .match-player {

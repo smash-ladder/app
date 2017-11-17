@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route, Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import './Matches.css';
 import api from '../Api';
 
@@ -52,7 +52,7 @@ class MatchesRow extends React.Component {
 
     return(
       <li className='ladder-player match-player'>
-        <img src={image} className='ladder-player__image'/>
+        <img src={image} className='ladder-player__image' alt='' />
         <div className='match-player__name'>
           {this.props.player.name}<br/>
           <small>Rank: {this.props.player.rank}</small>

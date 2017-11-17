@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import CharacterSelect from '../CharacterSelect/CharacterSelect';
 import './ResultPage.css';
 
 export default class ResultPlayerInfoPage extends Component {
@@ -23,7 +21,7 @@ export default class ResultPlayerInfoPage extends Component {
 
     return (
       <div className='player-info'>
-        <img src={image} className='match-player__image'/>
+        <img src={image} className='match-player__image' alt=''/>
         <span className='player-name'>{this.props.player.name}</span>
         <button className='change-characters-button' onClick={this.changeCharacter}>Change Character</button>
       </div>

@@ -59,9 +59,6 @@ export default class ResultPage extends Component {
     this.setState({ player: additionalInfoPlayer });
 
     const opponentUserName = this.props.location.state.opponent;
-    console.log(opponentUserName);
-    const opponent = await api.getResource(`players/${opponentUserName}`).get();
-
     const opponentInfoFromLadder = await api.getResource(`/ladders/ssb64-1v1/rankings/${opponentUserName}`);
     let opponentCharacter = await opponentInfoFromLadder.follow('favoriteCharacter');
     opponentCharacter = await opponentCharacter.get();
@@ -103,7 +100,6 @@ export default class ResultPage extends Component {
   }
 
   async submitWin() {
-    console.log('asdf');
     if (this.state.player.character) {
       this.setState({isValid: true});
       await this.submitMatch(this.state.player.name, this.state.player.character, this.state.opponent.name, this.state.opponent.character);
@@ -122,8 +118,6 @@ export default class ResultPage extends Component {
   }
 
   onChange(player) {
-    console.log('change');
-    console.log(player);
     this.setState({
       change: true,
       changePlayer: player
@@ -131,9 +125,6 @@ export default class ResultPage extends Component {
   }
 
   updatePlayerChar(player, newChar) {
-    console.log('update to', newChar, player);
-    const playerKey = this.state.changePlayer;
-
     if (player.name === window.localStorage.getItem('userName')) {
       const additionalInfoPlayer = Object.assign({}, this.state.player);
       additionalInfoPlayer.character = newChar;
@@ -157,11 +148,10 @@ export default class ResultPage extends Component {
     var nbLiveLeft = [];
 
     for (var i = 1; i <= 5; i++) {
-      var is_selected = this.state.livesLeft == i;
+      var is_selected = this.state.livesLeft === i;
       nbLiveLeft.push(<NumberLivesLeft value={i} key={i} clickAction={this.setNumberLivesLeft.bind(this, i)} isSelected={is_selected}></NumberLivesLeft>);
     };
 
-    let page;
     if (this.state.change) {
       return (<CharacterSelect player={this.state.changePlayer} onSelection={this.updatePlayerChar}/>)
     }

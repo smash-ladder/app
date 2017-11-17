@@ -2,20 +2,39 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import './ResultPage.css';
 import ResultPlayerInfoPage from './ResultPlayerInfoPage.js';
-
-const currentUser = {
-  ranking: 1,
-  character: 'pikachu',
-  name: 'Minh Hai'
-};
-
-const opponent = {
-  ranking: 2,
-  character: 'ness',
-  name: 'Phil'
-};
+import api from '../Api';
 
 export default class ResultPage extends Component {
+
+  constructor (props) {
+    super(props);
+    this.state = {
+      opponent: {
+        name: null,
+        character: null
+      },
+      player: {
+        name: window.localStorage.getItem('userName'),
+        character: null
+      }
+    };
+  }
+
+  async componentDidMount() {
+    const userName = window.localStorage.getItem('userName');
+    const currentPlayer = await api.getResource(`players/${userName}`).get();
+    console.log(currentPlayer);
+
+    const opponentUserName = this.props.location.state.opponent;
+    console.log(opponentUserName);
+    const opponent = await api.getResource(`players/${opponentUserName}`).get();
+    this.setState({
+      opponent: {
+        name: opponentUserName,
+      }
+    });
+  }
+
   render() {
     return (
       <div className='app'>
@@ -25,9 +44,9 @@ export default class ResultPage extends Component {
             <h2>Who won?</h2>
 
             <div className='versus-wrapper'>
-              <ResultPlayerInfoPage player={currentUser} ></ResultPlayerInfoPage>
+              <ResultPlayerInfoPage player={this.state.player} ></ResultPlayerInfoPage>
               <span className='versus'>vs</span>
-              <ResultPlayerInfoPage player={opponent} ></ResultPlayerInfoPage>
+              <ResultPlayerInfoPage player={this.state.opponent} ></ResultPlayerInfoPage>
             </div>
 
             <div>
@@ -43,7 +62,7 @@ export default class ResultPage extends Component {
 
             <div className='winner-button-wrapper'>
               <button className='winning-button user-winning-button'>I Won</button>
-              <button className='winning-button'>{opponent.name} Won</button>
+              <button className='winning-button'>{this.state.opponent.name} Won</button>
             </div>
 
           </div>

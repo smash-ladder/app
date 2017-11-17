@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import api from '../Api';
 
-const characters = ['kirby', 'falcon', 'ness', 'jigglypuff', 'link', 'pikachu', 'yoshi', 'fox', 'mario', 'donkeykong', 'samus', 'luigi'];
-
 export default class Ladder extends Component {
   constructor(props) {
     super(props);
@@ -20,12 +18,15 @@ export default class Ladder extends Component {
 
     await Promise.all(rankingResources.map(async (resource) => {
       const ranking = await resource.get();
+      let character = await resource.follow('favoriteCharacter');
+      character = await character.get();
+      const characterNameKey = character.name.toLowerCase();
       let player = await resource.follow('player');
       player = await player.get();
       rankings.push({
         rank: ranking.rank,
         name: player.userName,
-        character: characters[Math.floor(Math.random()*12)] // todo: replace with character from api
+        character: characterNameKey
       });
     }));
 

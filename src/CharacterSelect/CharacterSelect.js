@@ -3,8 +3,8 @@ import Header from '../Header/Header';
 import './CharacterSelect.css';
 
 const characters = [
-  { key: 'falcon', name: 'Captain Falcon' },
-  { key: 'donkeykong', name: 'Donkey Kong' },
+  { key: 'captain falcon', name: 'Captain Falcon' },
+  { key: 'donkey kong', name: 'Donkey Kong' },
   { key: 'fox', name: 'Fox' },
   { key: 'jigglypuff', name: 'Jigglypuff' },
   { key: 'kirby', name: 'Kirby' },

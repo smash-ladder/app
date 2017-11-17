@@ -44,8 +44,10 @@ export default class CharacterSelect extends Component {
       <div className='app'>
         <Header hasNavbar={false} pageTitle={this.state.title}/>
         <div className="app__body">
-          <div className='char-select'>
-            {items}
+          <div className="bound">
+            <div className='char-select'>
+              {items}
+            </div>
           </div>
         </div>
       </div>

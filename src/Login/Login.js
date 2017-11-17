@@ -38,7 +38,7 @@ export default class Login extends Component {
     }
 
     return (
-      <div className='login-page'>
+      <div className='login-page bound'>
         <img src={logo} className='login-page__logo' />
         <img src={charactersImage} />
         <form onSubmit={this.onSubmit} className='login-form' ref='loginForm'>

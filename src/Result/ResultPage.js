@@ -53,27 +53,29 @@ export default class ResultPage extends Component {
       <div className='app'>
         <Header pageTitle='Submit Match Results' />
         <div className="app__body">
-          <div className='result-page'>
-            <h2>Who won?</h2>
+          <div className="bound">
+            <div className='result-page'>
+              <h2>Who won?</h2>
 
-            <div className='versus-wrapper'>
-              <ResultPlayerInfoPage player={this.state.player} ></ResultPlayerInfoPage>
-              <span className='versus'>vs</span>
-              <ResultPlayerInfoPage player={this.state.opponent} ></ResultPlayerInfoPage>
-            </div>
-
-            <div>
-              <h3>Winner&#39;s Lives Left</h3>
-              <div className='number-lives-wrapper'>
-                {nbLiveLeft}
+              <div className='versus-wrapper'>
+                <ResultPlayerInfoPage player={this.state.player} ></ResultPlayerInfoPage>
+                <span className='versus'>vs</span>
+                <ResultPlayerInfoPage player={this.state.opponent} ></ResultPlayerInfoPage>
               </div>
-            </div>
 
-            <div className='winner-button-wrapper'>
-              <button className='winning-button user-winning-button'>I Won</button>
-              <button className='winning-button'>{this.state.opponent.name} Won</button>
-            </div>
+              <div>
+                <h3>Winner&#39;s Lives Left</h3>
+                <div className='number-lives-wrapper'>
+                  {nbLiveLeft}
+                </div>
+              </div>
 
+              <div className='winner-button-wrapper'>
+                <button className='winning-button user-winning-button'>I Won</button>
+                <button className='winning-button'>{this.state.opponent.name} Won</button>
+              </div>
+
+            </div>
           </div>
         </div>
       </div>

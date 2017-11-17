@@ -53,9 +53,11 @@ export default class Ladder extends Component {
       <div className='app'>
         <Header hasNavbar={true} />
         <div className="app__body">
-          <ul className='ladder'>
-            {items}
-          </ul>
+          <div className="bound">
+            <ul className='ladder'>
+              {items}
+            </ul>
+          </div>
         </div>
       </div>
     );

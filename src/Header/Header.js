@@ -10,9 +10,11 @@ export default class Header extends Component {
 
     return (
       <div className="app__topbar">
-        <Link to={'/'}><img src={logo} className="topbar__logo" alt="logo" /></Link>
-        {pageTitle}
-        {navbar}
+        <div className='bound'>
+          <Link to={'/'}><img src={logo} className="topbar__logo" alt="logo" /></Link>
+          {pageTitle}
+          {navbar}
+        </div>
       </div>
     );
   }

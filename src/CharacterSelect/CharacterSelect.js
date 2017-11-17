@@ -20,6 +20,7 @@ const characters = [
 export default class CharacterSelect extends Component {
   constructor(props) {
     super(props);
+    console.log(props);
     this.state = {
       title: `${this.props.userName} Played As`
     };
@@ -41,13 +42,11 @@ export default class CharacterSelect extends Component {
     });
 
     return (
-      <div className='app'>
-        <Header hasNavbar={false} pageTitle={this.state.title}/>
-        <div className="app__body">
-          <div className="bound">
-            <div className='char-select'>
-              {items}
-            </div>
+      <div className="app__body">
+        <div className="bound">
+          <h3>{this.props.player.name} Played As</h3>
+          <div className='char-select'>
+            {items}
           </div>
         </div>
       </div>

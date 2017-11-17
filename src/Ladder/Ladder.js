@@ -22,7 +22,13 @@ export default class Ladder extends Component {
       const ranking = await resource.refresh();
       let character = await resource.follow('favoriteCharacter');
       character = await character.get();
-      const characterNameKey = character.name.toLowerCase();
+      let characterNameKey = character.name.toLowerCase();
+      if (characterNameKey === 'captain falcon') {
+        characterNameKey = 'falcon';
+      }
+      if (characterNameKey === 'donkey kong') {
+        characterNameKey = 'donkey-kong';
+      }
       let player = await resource.follow('player');
       player = await player.get();
       rankings.push({

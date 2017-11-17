@@ -19,12 +19,17 @@ a {
   display: flex;
 }
 
-.challenge-button, .add-result-button {
-  width: 50%;
+.alert-sent {
+  text-align: center;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.challenge-button, .add-result-button, .alert-sent {
   font-size: 14px;
 }
 
-.match-player button {
+.match-player button, .alert-sent {
   font-size: 14px;
   padding: 10px 8px;
 }
@@ -36,4 +41,9 @@ a {
 .match-player {
   margin-bottom: 15px;
   background-color: #222;
+}
+
+.alert-sent {
+  color: white;
+  background-color: green;
 }

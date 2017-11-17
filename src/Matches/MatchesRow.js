@@ -5,6 +5,13 @@ import api from '../Api';
 
 class MatchesRow extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      challengeSent: false
+    };
+  }
+
   sendChallenge = async () => {
     const player = window.localStorage.getItem('userName');
     const opponent = this.props.player.name;
@@ -23,10 +30,26 @@ class MatchesRow extends React.Component {
       },
       body: JSON.stringify(body)
     });
+
+    this.setState({
+      challengeSent: true
+    })
   }
 
   render() {
     const image = require(`../images/${this.props.player.character}.png`);
+
+    let challengeButton;
+    let sentAlert;
+
+    if (this.state.challengeSent) {
+      sentAlert = <div className='alert-sent'>Sent</div>
+    } else {
+      challengeButton = (<button className='challenge-button' onClick={this.sendChallenge}>
+        Challenge
+      </button>);
+    }
+
     return(
       <li className='ladder-player match-player'>
         <img src={image} className='ladder-player__image'/>
@@ -34,10 +57,9 @@ class MatchesRow extends React.Component {
           {this.props.player.name}<br/>
           <small>Rank: {this.props.player.rank}</small>
         </div>
+        {sentAlert}
         <div className='match-buttons'>
-          <button className='challenge-button' onClick={this.sendChallenge}>
-            Challenge
-          </button>
+          {challengeButton}
           <Link to={{
               pathname: '/result',
               state: { opponent: this.props.player.name }

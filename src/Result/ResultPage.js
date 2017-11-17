@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import './ResultPage.css';
 import ResultPlayerInfoPage from './ResultPlayerInfoPage.js';
+import CharacterSelect from '../CharacterSelect/CharacterSelect.js';
 import { Redirect } from 'react-router-dom';
 import api from '../Api';
 import NumberLivesLeft from './NumberLivesLeft.js';
@@ -24,6 +25,8 @@ export default class ResultPage extends Component {
     this.submitMatch = this.submitMatch.bind(this);
     this.submitWin = this.submitWin.bind(this);
     this.submitLoss = this.submitLoss.bind(this);
+    this.onChange = this.onChange.bind(this);
+    this.updatePlayerChar = this.updatePlayerChar.bind(this);
   }
 
   setNumberLivesLeft(nbLives) {
@@ -97,6 +100,34 @@ export default class ResultPage extends Component {
     await this.submitMatch(this.state.opponent.name, this.state.opponent.character, this.state.player.name, this.state.player.character);
   }
 
+  onChange(player) {
+    console.log('change');
+    console.log(player);
+    this.setState({
+      change: true,
+      changePlayer: player
+    })
+  }
+
+  updatePlayerChar(player, newChar) {
+    console.log('update to', newChar, player);
+    const playerKey = this.state.changePlayer;
+
+    if (player.name === window.localStorage.getItem('userName')) {
+      const additionalInfoPlayer = Object.assign({}, this.state.player);
+      additionalInfoPlayer.character = newChar;
+      this.setState({ player: additionalInfoPlayer });
+    } else {
+      const additionalInfoPlayer = Object.assign({}, this.state.opponent);
+      additionalInfoPlayer.character = newChar;
+      this.setState({ opponent: additionalInfoPlayer });
+    }
+    this.setState({
+      change: false
+    })
+    console.log(this.state);
+  }
+
   render() {
     if (this.state.submit) {
       return (<Redirect to='/ladder'/>);
@@ -109,6 +140,11 @@ export default class ResultPage extends Component {
       nbLiveLeft.push(<NumberLivesLeft value={i} key={i} clickAction={this.setNumberLivesLeft.bind(this, i)} isSelected={is_selected}></NumberLivesLeft>);
     };
 
+    let page;
+    if (this.state.change) {
+      return (<CharacterSelect player={this.state.changePlayer} onSelection={this.updatePlayerChar}/>)
+    }
+
     return (
       <div className='app'>
         <Header pageTitle='Submit Match Results' />
@@ -118,9 +154,9 @@ export default class ResultPage extends Component {
               <h2>Who won?</h2>
 
               <div className='versus-wrapper'>
-                <ResultPlayerInfoPage player={this.state.player}></ResultPlayerInfoPage>
+                <ResultPlayerInfoPage player={this.state.player} onChange={this.onChange} />
                 <span className='versus'>vs</span>
-                <ResultPlayerInfoPage player={this.state.opponent}></ResultPlayerInfoPage>
+                <ResultPlayerInfoPage player={this.state.opponent} onChange={this.onChange} />
               </div>
 
               <div>
@@ -140,5 +176,6 @@ export default class ResultPage extends Component {
         </div>
       </div>
     );
+
   }
 }

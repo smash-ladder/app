@@ -3,8 +3,8 @@ import Header from '../Header/Header';
 import './CharacterSelect.css';
 
 const characters = [
-  { key: 'captain falcon', name: 'Captain Falcon' },
-  { key: 'donkey kong', name: 'Donkey Kong' },
+  { key: 'falcon', name: 'Captain Falcon' },
+  { key: 'donkey-kong', name: 'Donkey Kong' },
   { key: 'fox', name: 'Fox' },
   { key: 'jigglypuff', name: 'Jigglypuff' },
   { key: 'kirby', name: 'Kirby' },
@@ -28,6 +28,7 @@ export default class CharacterSelect extends Component {
 
   handleClick = (charKey) => {
     console.log(charKey);
+    this.props.onSelection(this.props.player, charKey);
   }
 
   render() {
@@ -44,7 +45,7 @@ export default class CharacterSelect extends Component {
     return (
       <div className="app__body">
         <div className="bound">
-          <h3>{this.props.player.name} Played As</h3>
+          <h3>Played As</h3>
           <div className='char-select'>
             {items}
           </div>

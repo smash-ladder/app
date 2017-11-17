@@ -1,11 +1,9 @@
 .add-result-button {
-  margin-left: auto;
+  margin-left: 5px;
 }
 .add-result-button button {
   background-color: #ffcc28;
   color: black;
-  height: 100%;
-  border-radius: 0;
 }
 
 a {
@@ -13,8 +11,26 @@ a {
   color: black;
 }
 
+.match-buttons {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+}
+
+.challenge-button, .add-result-button {
+  width: 50%;
+  font-size: 14px;
+}
+
+.match-player button {
+  font-size: 14px;
+  padding: 10px 8px;
+}
+
 .match-player__name {
-  min-width: 45%;
+  min-width: 40%;
 }
 
 .match-player {

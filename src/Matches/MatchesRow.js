@@ -34,18 +34,20 @@ class MatchesRow extends React.Component {
           {this.props.player.name}<br/>
           <small>Rank: {this.props.player.rank}</small>
         </div>
-        <button onClick={this.sendChallenge}>
-          Challenge
-        </button>
-        <Link to={{
-            pathname: '/result',
-            state: { opponent: this.props.player.name }
-          }}
-          className='add-result-button'>
-          <button >
-            Add Result
+        <div className='match-buttons'>
+          <button className='challenge-button' onClick={this.sendChallenge}>
+            Challenge
           </button>
-        </Link>
+          <Link to={{
+              pathname: '/result',
+              state: { opponent: this.props.player.name }
+            }}
+            className='add-result-button'>
+            <button >
+              Add&nbsp;Result
+            </button>
+          </Link>
+        </div>
       </li>
     );
   }

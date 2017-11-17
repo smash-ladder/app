@@ -14,6 +14,7 @@ export default class MyMatchesList extends Component {
   async componentDidMount() {
     const userName = window.localStorage.getItem('userName');
     let matches = await api.getResource(`/ladders/ssb64-1v1/rankings/${userName}/allowed-challenges`);
+    await matches.refresh();
     matches = await matches.followAll('item');
 
     const rankings = [];

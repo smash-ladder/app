@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Header from '../Header/Header';
 import './ResultPage.css';
 import ResultPlayerInfoPage from './ResultPlayerInfoPage.js';
+import { Redirect } from 'react-router-dom';
 import api from '../Api';
 import NumberLivesLeft from './NumberLivesLeft.js';
 
@@ -67,6 +68,8 @@ export default class ResultPage extends Component {
       },
       body: JSON.stringify(body)
     });
+
+    this.setState({submit: true})
   }
 
   async submitWin() {
@@ -79,6 +82,10 @@ export default class ResultPage extends Component {
   }
 
   render() {
+    if (this.state.submit) {
+      return (<Redirect to='/ladder'/>);
+    }
+
     var nbLiveLeft = [];
 
     for (var i = 1; i <= 5; i++) {

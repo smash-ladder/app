@@ -17,7 +17,7 @@ export default class Ladder extends Component {
     const rankings = [];
 
     await Promise.all(rankingResources.map(async (resource) => {
-      const ranking = await resource.get();
+      const ranking = await resource.refresh();
       let character = await resource.follow('favoriteCharacter');
       character = await character.get();
       const characterNameKey = character.name.toLowerCase();

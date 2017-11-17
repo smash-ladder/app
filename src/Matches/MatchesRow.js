@@ -8,7 +8,10 @@ class MatchesRow extends React.Component {
     return(
       <li className='ladder-player match-player' key={this.props.listIndex.toString()}>
         <img src={image} className='ladder-player__image'/>
-        <div className='match-player__name'>{this.props.player.name}<br/>Rank: {this.props.player.ranking}</div>
+        <div className='match-player__name'>
+          {this.props.player.name}<br/>
+          <small>Rank: {this.props.player.rank}</small>
+        </div>
         <button className='add-result-button'>
           <Link to={{
             pathname: '/result',

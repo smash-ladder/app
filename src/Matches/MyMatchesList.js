@@ -6,17 +6,17 @@ const data = [
   {
     ranking: 1,
     character: 'pikachu',
-    name: 'Minh Hai'
+    name: 'minhhai'
   },
   {
     ranking: 2,
     character: 'kirby',
-    name: 'Brendan'
+    name: 'brendan'
   },
   {
     ranking: 3,
-    character: 'ness',
-    name: 'Phil'
+    character: 'captain falcon',
+    name: 'evert'
   }
 ];
 

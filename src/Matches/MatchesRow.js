@@ -12,12 +12,15 @@ class MatchesRow extends React.Component {
           {this.props.player.name}<br/>
           <small>Rank: {this.props.player.rank}</small>
         </div>
-        <button className='add-result-button'>
-          <Link to={{
+        <Link to={{
             pathname: '/result',
             state: { opponent: this.props.player.name }
-          }}>Add Result</Link>
-        </button>
+          }}
+          className='add-result-button'>
+          <button >
+            Add Result
+          </button>
+        </Link>
       </li>
     );
   }

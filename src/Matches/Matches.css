@@ -1,7 +1,11 @@
 .add-result-button {
+  margin-left: auto;
+}
+.add-result-button button {
   background-color: #ffcc28;
-  color: white;
+  color: black;
   height: 100%;
+  border-radius: 0;
 }
 
 a {

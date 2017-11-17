@@ -28,7 +28,9 @@ export default class Ladder extends Component {
       rankings.push({
         rank: ranking.rank,
         name: player.userName,
-        character: characterNameKey
+        character: characterNameKey,
+        wins: ranking.wins,
+        losses: ranking.losses
       });
     }));
 
@@ -44,9 +46,12 @@ export default class Ladder extends Component {
       const image = require(`../images/${item.character}.png`);
       return (
         <li className='ladder-player' key={index.toString()}>
-          <div className='ladder-player__rank'>{item.rank}</div>
-          <img src={image} className='ladder-player__image'/>
-          <div className='ladder-player__name'>{item.name}</div>
+          <div>
+            <div className='ladder-player__rank'>{item.rank}</div>
+            <img src={image} className='ladder-player__image'/>
+            <div className='ladder-player__name'>{item.name}</div>
+          </div>
+          <div className='ladder__win-loss'><span className='wins'>W{item.wins}</span>&nbsp;/&nbsp;<span className='losses'>L{item.losses}</span></div>
         </li>
       );
     });

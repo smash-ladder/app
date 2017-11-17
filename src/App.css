@@ -116,6 +116,15 @@ h3 {
   width: 100%;
 }
 
+.ladder-player > div {
+  display: -webkit-flex;
+  display: -moz-flex;
+  display: -ms-flex;
+  display: -o-flex;
+  display: flex;
+  align-items: center;
+}
+
 
 .ladder-player:nth-child(odd) {
   background-color: #222;
@@ -127,8 +136,22 @@ h3 {
 }
 
 .ladder-player__image {
-  height: 100%;
+  height: 50px;
   margin-right: 15px;
+}
+
+.ladder__win-loss {
+  margin-left: auto;
+  margin-right: 10px;
+  color: #666;
+}
+
+.wins {
+  color: #18dc18;
+}
+
+.losses {
+  color: #fd4e4e;
 }
 
 .page-title {

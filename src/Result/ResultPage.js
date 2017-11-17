@@ -35,23 +35,39 @@ export default class ResultPage extends Component {
     const currentPlayer = await api.getResource(`players/${userName}`).get();
     console.log(currentPlayer);
 
+    const userInfoFromLadder = await api.getResource(`/ladders/ssb64-1v1/rankings/${userName}`);
+    let userCharacter = await userInfoFromLadder.follow('favoriteCharacter');
+    userCharacter = await userCharacter.get();
+    const userCharacterNameKey = userCharacter.name.toLowerCase();
+
+    const additionalInfoPlayer = Object.assign({}, this.state.player);
+    additionalInfoPlayer.character = userCharacterNameKey;
+    this.setState({ player: additionalInfoPlayer });
+
     const opponentUserName = this.props.location.state.opponent;
     console.log(opponentUserName);
     const opponent = await api.getResource(`players/${opponentUserName}`).get();
+
+    const opponentInfoFromLadder = await api.getResource(`/ladders/ssb64-1v1/rankings/${opponentUserName}`);
+    let opponentCharacter = await opponentInfoFromLadder.follow('favoriteCharacter');
+    opponentCharacter = await opponentCharacter.get();
+    const opponentCharacterNameKey = opponentCharacter.name.toLowerCase();
+
     this.setState({
       opponent: {
         name: opponentUserName,
+        character: opponentCharacterNameKey
       }
     });
   }
 
-  async submitMatch (winner, loser) {
+  async submitMatch (winner, winnerCharacter, loser, loserCharacter) {
     let body = {
       "_links": {
         "winner" : { "href": `/players/${winner}` },
         "loser" : { "href": `/players/${loser}` },
-        "winnerCharacter" : { "href": `/games/ssb64/characters/ness` },
-        "loserCharacter" : { "href": `/games/ssb64/characters/kirby` },
+        "winnerCharacter" : { "href": `/games/ssb64/characters/${winnerCharacter}` },
+        "loserCharacter" : { "href": `/games/ssb64/characters/${loserCharacter}` },
         "stage" : { "href": '/games/ssb64/stages/dream-land' }
       },
       "livesLeft": this.state.livesLeft
@@ -74,11 +90,11 @@ export default class ResultPage extends Component {
 
   async submitWin() {
     console.log('asdf');
-    await this.submitMatch(this.state.player.name, this.state.opponent.name);
+    await this.submitMatch(this.state.player.name, this.state.player.character, this.state.opponent.name, this.state.opponent.character);
   }
 
   async submitLoss() {
-    await this.submitMatch(this.state.opponent.name, this.state.player.name);
+    await this.submitMatch(this.state.opponent.name, this.state.opponent.character, this.state.player.name, this.state.player.character);
   }
 
   render() {

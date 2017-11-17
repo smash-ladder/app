@@ -20,6 +20,9 @@ export default class ResultPage extends Component {
         character: null
       }
     };
+    this.submitMatch = this.submitMatch.bind(this);
+    this.submitWin = this.submitWin.bind(this);
+    this.submitLoss = this.submitLoss.bind(this);
   }
 
   setNumberLivesLeft(nbLives) {
@@ -41,6 +44,40 @@ export default class ResultPage extends Component {
     });
   }
 
+  async submitMatch (winner, loser) {
+    let body = {
+      "_links": {
+        "winner" : { "href": `/players/${winner}` },
+        "loser" : { "href": `/players/${loser}` },
+        "winnerCharacter" : { "href": `/games/ssb64/characters/ness` },
+        "loserCharacter" : { "href": `/games/ssb64/characters/kirby` },
+        "stage" : { "href": '/games/ssb64/stages/dream-land' }
+      },
+      "livesLeft": this.state.livesLeft
+    };
+
+    console.log(body);
+
+    const matchesResource = await api.getResource('ladders/ssb64-1v1/matches');
+    console.log(matchesResource);
+    await matchesResource.fetch({
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    });
+  }
+
+  async submitWin() {
+    console.log('asdf');
+    await this.submitMatch(this.state.player.name, this.state.opponent.name);
+  }
+
+  async submitLoss() {
+    await this.submitMatch(this.state.opponent.name, this.state.player.name);
+  }
+
   render() {
     var nbLiveLeft = [];
 
@@ -58,9 +95,9 @@ export default class ResultPage extends Component {
               <h2>Who won?</h2>
 
               <div className='versus-wrapper'>
-                <ResultPlayerInfoPage player={this.state.player} ></ResultPlayerInfoPage>
+                <ResultPlayerInfoPage player={this.state.player}></ResultPlayerInfoPage>
                 <span className='versus'>vs</span>
-                <ResultPlayerInfoPage player={this.state.opponent} ></ResultPlayerInfoPage>
+                <ResultPlayerInfoPage player={this.state.opponent}></ResultPlayerInfoPage>
               </div>
 
               <div>
@@ -71,8 +108,8 @@ export default class ResultPage extends Component {
               </div>
 
               <div className='winner-button-wrapper'>
-                <button className='winning-button user-winning-button'>I Won</button>
-                <button className='winning-button'>{this.state.opponent.name} Won</button>
+                <button className='winning-button user-winning-button' onClick={this.submitWin}>I Won</button>
+                <button className='winning-button' onClick={this.submitLoss}>{this.state.opponent.name} Won</button>
               </div>
 
             </div>

@@ -44,12 +44,13 @@ export default class Ladder extends Component {
   render() {
     const items = this.state.rankings.map((item, index) => {
       const image = require(`../images/${item.character}.png`);
+      const isCurrent = item.name === window.localStorage.getItem('userName');
       return (
         <li className='ladder-player' key={index.toString()}>
           <div>
             <div className='ladder-player__rank'>{item.rank}</div>
             <img src={image} className='ladder-player__image' alt=''/>
-            <div className='ladder-player__name'>{item.name}</div>
+            <div className={'ladder-player__name' + (isCurrent ? ' ladder-player__name--current' : '')}>{item.name}</div>
           </div>
           <div className='ladder__win-loss'><span className='wins'>W{item.wins}</span>&nbsp;/&nbsp;<span className='losses'>L{item.losses}</span></div>
         </li>

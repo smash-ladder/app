@@ -130,6 +130,10 @@ h3 {
   background-color: #222;
 }
 
+.ladder-player__name--current {
+  color: #ffcc28;
+}
+
 .ladder-player__rank {
   width: 50px;
   text-align: center;

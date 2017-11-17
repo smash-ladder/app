@@ -11,6 +11,7 @@ export default class ResultPage extends Component {
   constructor (props) {
     super(props);
     this.state = {
+      isValid: true,
       livesLeft: 1,
       opponent: {
         name: null,
@@ -36,9 +37,19 @@ export default class ResultPage extends Component {
     console.log(currentPlayer);
 
     const userInfoFromLadder = await api.getResource(`/ladders/ssb64-1v1/rankings/${userName}`);
-    let userCharacter = await userInfoFromLadder.follow('favoriteCharacter');
-    userCharacter = await userCharacter.get();
-    const userCharacterNameKey = userCharacter.name.toLowerCase();
+
+    let userCharacter;
+    let userCharacterNameKey;
+
+    try {
+      userCharacter = await userInfoFromLadder.follow('favoriteCharacter');
+    } catch (error) {
+    } finally {
+      if (userCharacter) {
+        userCharacter = await userCharacter.get();
+        userCharacterNameKey = userCharacter.name.toLowerCase();
+      }
+    }
 
     const additionalInfoPlayer = Object.assign({}, this.state.player);
     additionalInfoPlayer.character = userCharacterNameKey;
@@ -90,11 +101,21 @@ export default class ResultPage extends Component {
 
   async submitWin() {
     console.log('asdf');
-    await this.submitMatch(this.state.player.name, this.state.player.character, this.state.opponent.name, this.state.opponent.character);
+    if (this.state.player.character) {
+      this.setState({isValid: true});
+      await this.submitMatch(this.state.player.name, this.state.player.character, this.state.opponent.name, this.state.opponent.character);
+    } else {
+      this.setState({isValid: false});
+    }
   }
 
   async submitLoss() {
-    await this.submitMatch(this.state.opponent.name, this.state.opponent.character, this.state.player.name, this.state.player.character);
+    if (this.state.player.character) {
+      this.setState({isValid: true});
+      await this.submitMatch(this.state.opponent.name, this.state.opponent.character, this.state.player.name, this.state.player.character);
+    } else {
+      this.setState({isValid: false});
+    }
   }
 
   render() {
@@ -108,6 +129,8 @@ export default class ResultPage extends Component {
       var is_selected = this.state.livesLeft == i;
       nbLiveLeft.push(<NumberLivesLeft value={i} key={i} clickAction={this.setNumberLivesLeft.bind(this, i)} isSelected={is_selected}></NumberLivesLeft>);
     };
+
+    const hasErrorMessage = this.state.isValid ? null : <p className='message-error'>Error: You need to select your character!</p>;
 
     return (
       <div className='app'>
@@ -129,6 +152,8 @@ export default class ResultPage extends Component {
                   {nbLiveLeft}
                 </div>
               </div>
+
+              {hasErrorMessage}
 
               <div className='winner-button-wrapper'>
                 <button className='winning-button user-winning-button' onClick={this.submitWin}>I Won</button>

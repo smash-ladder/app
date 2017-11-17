@@ -20,7 +20,8 @@ export default class ResultPlayerInfoPage extends Component {
   }
 
   render() {
-    const image = this.props.player.character ? require(`../images/${this.props.player.character}.png`) : null;
+    const character = this.props.player.character ? this.props.player.character : 'unknown';
+    const image = require(`../images/${character}.png`);
 
     if (this.state.change) {
       return <Redirect to='/character-select' player={this.props.player} />

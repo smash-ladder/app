@@ -23,9 +23,8 @@ const data = [
 export default class MyMatchesList extends Component {
   render() {
     const items = data.map((item, index) => {
-      const image = require(`../images/${item.character}.png`);
       return (
-        <MatchesRow player={item} key={index.toString()} image={image} ></MatchesRow>
+        <MatchesRow player={item} listIndex={index} ></MatchesRow>
       );
     });
 

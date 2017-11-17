@@ -3,12 +3,14 @@ import Header from '../Header/Header';
 import './ResultPage.css';
 import ResultPlayerInfoPage from './ResultPlayerInfoPage.js';
 import api from '../Api';
+import NumberLivesLeft from './NumberLivesLeft.js';
 
 export default class ResultPage extends Component {
 
   constructor (props) {
     super(props);
     this.state = {
+      livesLeft: 1,
       opponent: {
         name: null,
         character: null
@@ -18,6 +20,10 @@ export default class ResultPage extends Component {
         character: null
       }
     };
+  }
+
+  setNumberLivesLeft(nbLives) {
+    this.setState({livesLeft: nbLives});
   }
 
   async componentDidMount() {
@@ -36,6 +42,13 @@ export default class ResultPage extends Component {
   }
 
   render() {
+    var nbLiveLeft = [];
+
+    for (var i = 1; i <= 5; i++) {
+      var is_selected = this.state.livesLeft == i;
+      nbLiveLeft.push(<NumberLivesLeft value={i} clickAction={this.setNumberLivesLeft.bind(this, i)} isSelected={is_selected}></NumberLivesLeft>);
+    };
+
     return (
       <div className='app'>
         <Header pageTitle='Submit Match Results' />
@@ -52,11 +65,7 @@ export default class ResultPage extends Component {
             <div>
               <h3>Winner&#39;s Lives Left</h3>
               <div className='number-lives-wrapper'>
-                <span className='number-lives'>1</span>
-                <span className='number-lives'>2</span>
-                <span className='number-lives'>3</span>
-                <span className='number-lives'>4</span>
-                <span className='number-lives'>5</span>
+                {nbLiveLeft}
               </div>
             </div>
 

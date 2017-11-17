@@ -75,6 +75,6 @@
   margin-right: 10px;
 }
 
-.number-lives:hover {
+.number-lives-selected {
   background-color: #ffcc28;
 }

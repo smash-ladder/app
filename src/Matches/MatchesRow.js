@@ -6,7 +6,7 @@ class MatchesRow extends React.Component {
   render() {
     const image = require(`../images/${this.props.player.character}.png`);
     return(
-      <li className='ladder-player match-player' key={this.props.listIndex.toString()}>
+      <li className='ladder-player match-player'>
         <img src={image} className='ladder-player__image'/>
         <div className='match-player__name'>
           {this.props.player.name}<br/>

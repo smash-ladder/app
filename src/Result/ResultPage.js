@@ -106,7 +106,7 @@ export default class ResultPage extends Component {
 
     for (var i = 1; i <= 5; i++) {
       var is_selected = this.state.livesLeft == i;
-      nbLiveLeft.push(<NumberLivesLeft value={i} clickAction={this.setNumberLivesLeft.bind(this, i)} isSelected={is_selected}></NumberLivesLeft>);
+      nbLiveLeft.push(<NumberLivesLeft value={i} key={i} clickAction={this.setNumberLivesLeft.bind(this, i)} isSelected={is_selected}></NumberLivesLeft>);
     };
 
     return (

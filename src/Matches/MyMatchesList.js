@@ -40,7 +40,7 @@ export default class MyMatchesList extends Component {
   render() {
     const items = this.state.rankings.map((item, index) => {
       return (
-        <MatchesRow player={item} listIndex={index} ></MatchesRow>
+        <MatchesRow player={item} key={index} ></MatchesRow>
       );
     });
 

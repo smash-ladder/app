@@ -13,7 +13,9 @@ export default class Ladder extends Component {
   async componentDidMount() {
     const ladders = await api.follow('ladderCollection').followAll('item');
     const ladder64 = ladders[0];
-    const rankingResources = await ladder64.follow('ranking').followAll('item');
+    let rankingResources = await ladder64.follow('ranking');
+    await rankingResources.refresh();
+    rankingResources = await rankingResources.followAll('item');
     const rankings = [];
 
     await Promise.all(rankingResources.map(async (resource) => {

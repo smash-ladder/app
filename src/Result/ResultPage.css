@@ -78,3 +78,8 @@
 .number-lives-selected {
   background-color: #ffcc28;
 }
+
+.message-error {
+  color: white;
+  text-align: center;
+}

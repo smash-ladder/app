@@ -51,6 +51,12 @@ export default class ResultPage extends Component {
       if (userCharacter) {
         userCharacter = await userCharacter.get();
         userCharacterNameKey = userCharacter.name.toLowerCase();
+        if (userCharacterNameKey === 'captain falcon') {
+          userCharacterNameKey = 'falcon';
+        }
+        if (userCharacterNameKey === 'donkey kong') {
+          userCharacterNameKey = 'donkey-kong';
+        }
       }
     }
 
@@ -62,7 +68,14 @@ export default class ResultPage extends Component {
     const opponentInfoFromLadder = await api.getResource(`/ladders/ssb64-1v1/rankings/${opponentUserName}`);
     let opponentCharacter = await opponentInfoFromLadder.follow('favoriteCharacter');
     opponentCharacter = await opponentCharacter.get();
-    const opponentCharacterNameKey = opponentCharacter.name.toLowerCase();
+    let opponentCharacterNameKey = opponentCharacter.name.toLowerCase();
+
+    if (opponentCharacterNameKey === 'captain falcon') {
+      opponentCharacterNameKey = 'falcon';
+    }
+    if (opponentCharacterNameKey === 'donkey kong') {
+      opponentCharacterNameKey = 'donkey-kong';
+    }
 
     this.setState({
       opponent: {

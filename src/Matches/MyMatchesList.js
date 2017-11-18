@@ -25,7 +25,14 @@ export default class MyMatchesList extends Component {
       player = await player.get();
       let character = await match.follow('favoriteCharacter');
       character = await character.get();
-      const characterNameKey = character.name.toLowerCase();
+
+      let characterNameKey = character.name.toLowerCase();
+      if (characterNameKey === 'captain falcon') {
+        characterNameKey = 'falcon';
+      }
+      if (characterNameKey === 'donkey kong') {
+        characterNameKey = 'donkey-kong';
+      }
 
       rankings.push({
         rank: ranking.rank,

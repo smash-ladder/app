@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './CharacterSelect.css';
 
 const characters = [
-  { key: 'falcon', name: 'Captain Falcon' },
+  { key: 'captain-falcon', name: 'Captain Falcon' },
   { key: 'donkey-kong', name: 'Donkey Kong' },
   { key: 'fox', name: 'Fox' },
   { key: 'jigglypuff', name: 'Jigglypuff' },

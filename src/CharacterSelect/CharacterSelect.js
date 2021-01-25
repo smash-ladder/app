@@ -32,7 +32,7 @@ export default class CharacterSelect extends Component {
 
   render() {
     const items = characters.map((char, index) => {
-      const image = require(`../images/${char.key}.png`);
+      const image = require(`../images/ssbu/${char.key}.png`);
       return (
         <div className='char-select__item' key={index.toString()} onClick={(e) => this.handleClick(char.key)}>
           <img src={image} className='char-select__image' alt=''/>

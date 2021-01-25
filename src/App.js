@@ -8,6 +8,16 @@ import ResultPage from './Result/ResultPage';
 import CharacterSelect from './CharacterSelect/CharacterSelect';
 
 class App extends Component {
+
+  componentDidMount() {
+
+    const params = new URLSearchParams(document.location.search);
+    if (params.has('matrix_id')) {
+      window.localStorage.setItem('userName', params.get('matrix_id'));
+    }
+
+  }
+
   render() {
     return (
       <BrowserRouter>

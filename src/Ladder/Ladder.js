@@ -56,7 +56,7 @@ export default class Ladder extends Component {
             <div className='ladder-player__rank'>{item.rank}</div>
             <img src={image} className='ladder-player__image' alt=''/>
             <div className={'ladder-player__name' + (isCurrent ? ' ladder-player__name--current' : '')}>{item.name}</div>
-          </div>/
+          </div>
           <div className='ladder__win-loss'><span className='wins'>W{item.wins}</span>&nbsp;/&nbsp;<span className='losses'>L{item.losses}</span></div>
         </li>
       );

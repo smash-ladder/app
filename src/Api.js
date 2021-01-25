@@ -1,5 +1,5 @@
 import Ketting from 'ketting';
-var api = new Ketting('http://dev14-uswest1cdevc:3000/');
+var api = new Ketting('http://smash-api.badgateway.net/ladders/ssbu-2021/');
 
 api.contentTypes = [{
   mime: 'application/hal+json',

@@ -11,9 +11,8 @@ export default class Ladder extends Component {
   }
 
   async componentDidMount() {
-    const ladders = await api.follow('ladderCollection').followAll('item');
-    const ladder64 = ladders[0];
-    let rankingResources = await ladder64.follow('ranking');
+    const ladder = await api.getResource();
+    let rankingResources = await ladder.follow('ranking');
     await rankingResources.refresh();
     rankingResources = await rankingResources.followAll('item');
     const rankings = [];
@@ -49,7 +48,7 @@ export default class Ladder extends Component {
 
   render() {
     const items = this.state.rankings.map((item, index) => {
-      const image = require(`../images/${item.character}.png`);
+      const image = require(`../images/ssbu/${item.character}.png`);
       const isCurrent = item.name === window.localStorage.getItem('userName');
       return (
         <li className='ladder-player' key={index.toString()}>
@@ -57,7 +56,7 @@ export default class Ladder extends Component {
             <div className='ladder-player__rank'>{item.rank}</div>
             <img src={image} className='ladder-player__image' alt=''/>
             <div className={'ladder-player__name' + (isCurrent ? ' ladder-player__name--current' : '')}>{item.name}</div>
-          </div>
+          </div>/
           <div className='ladder__win-loss'><span className='wins'>W{item.wins}</span>&nbsp;/&nbsp;<span className='losses'>L{item.losses}</span></div>
         </li>
       );

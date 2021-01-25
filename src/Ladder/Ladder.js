@@ -32,7 +32,7 @@ export default class Ladder extends Component {
       player = await player.get();
       rankings.push({
         rank: ranking.rank,
-        name: player.userName,
+        name: player.name,
         character: characterNameKey,
         wins: ranking.wins,
         losses: ranking.losses

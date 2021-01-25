@@ -37,7 +37,7 @@ class MatchesRow extends React.Component {
   }
 
   render() {
-    const image = require(`../images/${this.props.player.character}.png`);
+    const image = require(`../images/ssbu/${this.props.player.character}.png`);
 
     let challengeButton;
     let sentAlert;

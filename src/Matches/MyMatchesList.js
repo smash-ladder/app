@@ -13,7 +13,7 @@ export default class MyMatchesList extends Component {
 
   async componentDidMount() {
     const userName = window.localStorage.getItem('userName');
-    let matches = await api.getResource(`/ladders/ssb64-1v1/rankings/${userName}/allowed-challenges`);
+    let matches = await api.getResource(`/ladders/ssbu-2021/rankings/${userName}/allowed-challenges`);
     await matches.refresh();
     matches = await matches.followAll('item');
 
@@ -36,7 +36,7 @@ export default class MyMatchesList extends Component {
 
       rankings.push({
         rank: ranking.rank,
-        name: player.userName,
+        name: player.name,
         character: characterNameKey
       });
     }));

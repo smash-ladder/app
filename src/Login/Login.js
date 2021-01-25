@@ -40,7 +40,7 @@ export default class Login extends Component {
         <img src={logo} className='login-page__logo' alt=''/>
         <img src={charactersImage} alt=''/>
         <form onSubmit={this.onSubmit} className='login-form' ref='loginForm'>
-          <input type='text' placeholder="Enter your Yelp Username" ref='usernameInput' required='true'/>
+          <input type='text' placeholder="Enter your Matrix Username" ref='usernameInput' required='true'/>
           <button type='submit'>Continue</button>
         </form>
       </div>

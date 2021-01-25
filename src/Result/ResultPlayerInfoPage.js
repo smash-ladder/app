@@ -18,7 +18,7 @@ export default class ResultPlayerInfoPage extends Component {
   render() {
     const image = this.props.player.character ? 
       require(`../images/ssbu/${this.props.player.character}.png`) :
-      require(`.../images/unknown.png`);
+      require(`../images/unknown.png`);
 
     return (
       <div className='player-info'>

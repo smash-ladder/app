@@ -21,13 +21,7 @@ export default class Ladder extends Component {
       const ranking = await resource.refresh();
       let character = await resource.follow('favoriteCharacter');
       character = await character.get();
-      let characterNameKey = character.name.toLowerCase();
-      if (characterNameKey === 'captain falcon') {
-        characterNameKey = 'falcon';
-      }
-      if (characterNameKey === 'donkey kong') {
-        characterNameKey = 'donkey-kong';
-      }
+      let characterNameKey = character.key;
       let player = await resource.follow('player');
       player = await player.get();
       rankings.push({
@@ -48,6 +42,7 @@ export default class Ladder extends Component {
 
   render() {
     const items = this.state.rankings.map((item, index) => {
+      
       const image = require(`../images/ssbu/${item.character}.png`);
       const isCurrent = item.name === window.localStorage.getItem('userName');
       return (
